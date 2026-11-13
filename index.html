@@ -42,6 +42,7 @@ body .text-gray-500{color:#6e5f53}body .text-gray-400{color:#8c7b6c}
 .inp.mnew{background:#FFF8DB;border:1.5px solid #E7C34A;font-weight:600}
 .inp.mnew.ok{background:#E6F7EC;border-color:#4CC38A}.inp.mnew.wrap{background:#FFEFD5;border-color:#F59E0B}.inp.mnew.bad{background:#FEE2E2;border-color:#EF4444}
 .th-old{color:#8c7b6c}.th-new{color:#9A6B00;font-weight:600}
+header .tab{color:#6b4a3a}header .tab:hover{background:#F6EEE6}header .tab.on{background:#FFF1E8;color:#B8431F;font-weight:600;box-shadow:none}
 @media print{body{background:#fff!important}}
 @media print{body *{visibility:hidden}#inv,#inv *{visibility:visible}#inv{position:absolute;left:0;top:0;width:100%;border:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 @page{margin:14mm}
@@ -49,9 +50,9 @@ body .text-gray-500{color:#6e5f53}body .text-gray-400{color:#8c7b6c}
 </style>
 </head>
 <body>
-<header id="nav" class="hidden sticky top-0 z-10 bg-[#EFE3D6]/90 backdrop-blur border-b border-[#D9C6B2]">
- <div class="max-w-5xl mx-auto px-3 py-2 flex flex-wrap items-center gap-2 justify-between">
-  <h1 class="flex items-center gap-2 text-xl font-semibold text-[#B8431F]"><img id="hl" alt="" class="h-9 w-9 object-contain">BP <span class="text-pink-500">Place</span></h1>
+<header id="nav" class="hidden sticky top-0 z-10 bg-white shadow-sm" style="background:#fff;border-bottom:1px solid #E7DFD8">
+ <div class="max-w-5xl mx-auto px-3 pt-2.5 pb-2 flex flex-wrap items-center gap-2 justify-between">
+  <h1 class="flex items-center"><img id="hl" alt="BP Place" class="h-14 object-contain" style="mix-blend-mode:multiply"></h1>
   <div class="flex gap-2 items-center"><input type="month" id="month" class="inp" style="width:9.5rem"><button class="btn2" onclick="logout()">ออก</button></div>
   <nav class="flex gap-1 overflow-x-auto w-full">
    <button class="tab adm" data-t="dash">Dashboard</button><button class="tab" data-t="rooms">ห้องพัก</button><button class="tab" data-t="meter">มิเตอร์</button>
@@ -126,7 +127,7 @@ async function start(){
  const{data:{user}}=await sb.auth.getUser();ROLE=(user?.app_metadata||{}).role==='staff'?'staff':'admin';
  document.querySelectorAll('.adm').forEach(b=>b.style.display=ROLE==='staff'?'none':'');
  if(ROLE==='staff'&&['dash','contract','exp','old','set'].includes(tab))tab='meter';
- $('#hl').src=LOGO_MARK;$('#nav').classList.remove('hidden');await loadAll();render();
+ $('#hl').src=LOGO_FULL;$('#nav').classList.remove('hidden');await loadAll();render();
 }
 
 /* ===== Data ===== */
